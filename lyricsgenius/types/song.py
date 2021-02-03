@@ -5,7 +5,6 @@
 from filecmp import cmp
 
 from .base import BaseEntity, Stats
-from .artist import Artist
 
 
 class Song(BaseEntity):
@@ -25,7 +24,7 @@ class Song(BaseEntity):
         lyrics_owner_id (:obj:`int`)
         lyrics_state (:obj:`str`)
         path (:obj:`str`)
-        primary_artist (:class:`Artist`)
+        primary_artist (:obj:`str`)
         pyongs_count (:obj:`int`)
         song_art_image_thumbnail_url (:obj:`str`)
         song_art_image_url (:obj:`str`)
@@ -43,7 +42,7 @@ class Song(BaseEntity):
         self._client = client
         self.artist = body['primary_artist']['name']
         self.lyrics = lyrics if lyrics else ""
-        self.primary_artist = Artist(client, body['primary_artist'])
+        self.primary_artist = body['primary_artist']
         self.stats = Stats(body['stats'])
 
         self.annotation_count = body['annotation_count']
