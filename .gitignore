@@ -28,3 +28,6 @@ __pycache__
 dist
 build
 .idea
+
+# my playground/testing file
+playground.py
